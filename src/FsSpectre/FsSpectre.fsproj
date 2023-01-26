@@ -4,8 +4,13 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="Spectre.Console" Version="0.46.0" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Library.fs" />
+    <Compile Include="MarkupBuilder.fs" />
+    <Compile Include="RuleBuilder.fs" />
+    <Compile Include="SelectionPromptBuilder.fs" />
+    <Compile Include="TreeNodeBuilder.fs" />
+    <Compile Include="TreeBuilder.fs" />
   </ItemGroup>
 </Project>
