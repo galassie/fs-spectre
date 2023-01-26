@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{2582F144-0AE1-4CF5-B5DA-97E1B20483B5}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FsSpectre", "src\FsSpectre\FsSpectre.fsproj", "{5B207AFA-B34F-459D-BA3C-310B727A90CC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5B207AFA-B34F-459D-BA3C-310B727A90CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B207AFA-B34F-459D-BA3C-310B727A90CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B207AFA-B34F-459D-BA3C-310B727A90CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B207AFA-B34F-459D-BA3C-310B727A90CC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5B207AFA-B34F-459D-BA3C-310B727A90CC} = {2582F144-0AE1-4CF5-B5DA-97E1B20483B5}
+	EndGlobalSection
+EndGlobal
