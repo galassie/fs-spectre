@@ -19,11 +19,23 @@ module TableBuilder =
         member __.TitleText(table: Table, text: string) = 
             table.Title <- TableTitle(text)
             table
-
+    
         [<CustomOperation "width">]
         member __.Width(table: Table, width: int) = 
             table.Width <- width
             table
+
+        [<CustomOperation "collapse">]
+        member __.Collapse(table: Table) = table.Collapse()
+
+        [<CustomOperation "simple_border">]
+        member __.SimpleBorder(table: Table) = table.SimpleBorder()
+
+        [<CustomOperation "rounded_border">]
+        member __.RoundedBorder(table: Table) = table.RoundedBorder()
+
+        [<CustomOperation "border_color">]
+        member __.BorderColor(table: Table, color: Color) = table.BorderColor(color)
 
         [<CustomOperation "no_headers">]
         member __.NoHeaders(table: Table) = table.HideHeaders()

@@ -10,10 +10,10 @@ module TreeNodeBuilder =
     type TreeNodeBuilder() =
         member __.Yield _ = TreeNode(Markup(String.Empty))
 
-        [<CustomOperation "root_renderable">]
-        member __.RootRenderable(_, renderable: IRenderable) = TreeNode(renderable)
+        [<CustomOperation "label_renderable">]
+        member __.LabelRenderable(_, renderable: IRenderable) = TreeNode(renderable)
 
-        [<CustomOperation "root_text">]
+        [<CustomOperation "label">]
         member __.RootText(_, text: string) = TreeNode(Markup(text))
 
         [<CustomOperation "node">]

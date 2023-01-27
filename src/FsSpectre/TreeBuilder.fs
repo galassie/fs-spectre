@@ -8,13 +8,13 @@ open Spectre.Console.Rendering
 module TreeBuilder =
 
     type TreeBuilder() =
-        member __.Yield _ = Tree(Markup(String.Empty))
+        member __.Yield _ = Tree(String.Empty)
 
-        [<CustomOperation "root_renderable">]
-        member __.RootRenderable(_, renderable: IRenderable) = Tree(renderable)
+        [<CustomOperation "label">]
+        member __.Label(_, label: string) = Tree(label)
 
-        [<CustomOperation "root_text">]
-        member __.RootText(_, text: string) = Tree(Markup(text))
+        [<CustomOperation "label_renderable">]
+        member __.LabelRenderable(_, renderable: IRenderable) = Tree(renderable)
 
         [<CustomOperation "node">]
         member __.Node(tree: Tree, subNode: TreeNode) = 

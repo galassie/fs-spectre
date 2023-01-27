@@ -66,8 +66,56 @@ table {
 
     empty_row
     row [|
+        markup { text "[red]Markup[/]" }
+        markup { text "[bold purple]Spectre.Console[/] supports a simple [i]bbcode[/] like [b]markup[/] for [yellow]color[/], [underline]style[/], and emoji! :thumbs_up: :red_apple: :ant: :bear: :baguette_bread: :bus:" }
+    |]
+
+    empty_row
+    row [|
         markup { text "[red]Tables and Trees[/]" }
-        markup { text "Word wrap text. Justify [green]left[/], [yellow]center[/] or [blue]right[/]." }
+        table {
+            rounded_border
+            collapse
+            border_color Color.Yellow
+            columns_text [| "Foo"; "Bar" |]
+            row [|
+                text { text "Baz" }
+                table {
+                    simple_border
+                    border_color Color.Grey
+                    columns [|
+                        tableColumn { header "Overview" }
+                        tableColumn { footer "[grey]3 Files, 225 KiB[/]" }
+                    |]
+
+                    row [|
+                        markup { text "[yellow]Files[/]" }
+                        tree {
+                            label "📁 src"
+                            node (treeNode 
+                                { 
+                                    label "📁 foo" 
+                                    node (treeNode { label "📄 bar.cs" } )
+                                })
+                            node (treeNode 
+                                { 
+                                    label "📁 baz" 
+                                    node (treeNode 
+                                        { 
+                                            label "📁 qux" 
+                                            node (treeNode { label "📄 corgi.txt" } )
+                                        } )
+                                })
+                            node (treeNode { label "📄 waldo.xml" })
+                        }
+                    |]
+                }
+            |]
+            row_text [|
+                "Qux"
+                "Corgi"
+            |]
+        }
     |]
 }
 |> AnsiConsole.Write

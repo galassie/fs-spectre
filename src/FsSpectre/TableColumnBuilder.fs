@@ -17,6 +17,16 @@ module TableColumnBuilder =
         [<CustomOperation "header_renderable">]
         member __.HeaderRenderable(_, renderable: IRenderable) = TableColumn(renderable)
 
+        [<CustomOperation "footer">]
+        member __.Footer(tableColumn: TableColumn, footer: string) = 
+            tableColumn.Footer <- Markup(footer)
+            tableColumn
+
+        [<CustomOperation "footer_renderable">]
+        member __.FooterRenderable(tableColumn: TableColumn, renderable: IRenderable) = 
+            tableColumn.Footer <- renderable
+            tableColumn
+
         [<CustomOperation "no_wrap">]
         member __.NoWrap(tableColumn: TableColumn) =
             tableColumn.NoWrap <- true
