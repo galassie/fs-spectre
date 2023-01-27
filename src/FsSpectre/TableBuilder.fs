@@ -15,6 +15,11 @@ module TableBuilder =
             table.Title <- title
             table
 
+        [<CustomOperation "title_text">]
+        member __.TitleText(table: Table, text: string) = 
+            table.Title <- TableTitle(text)
+            table
+
         [<CustomOperation "width">]
         member __.Width(table: Table, width: int) = 
             table.Width <- width
