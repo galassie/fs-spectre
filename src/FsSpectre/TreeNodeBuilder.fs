@@ -16,23 +16,23 @@ module TreeNodeBuilder =
         [<CustomOperation "root_text">]
         member __.RootText(_, text: string) = TreeNode(Markup(text))
 
-        [<CustomOperation "add_node">]
-        member __.AddNode(node: TreeNode, subNode: TreeNode) = 
+        [<CustomOperation "node">]
+        member __.Node(node: TreeNode, subNode: TreeNode) = 
             node.AddNode(subNode) |> ignore
             node
 
-        [<CustomOperation "add_nodes">]
-        member __.AddNodes(node: TreeNode, subNodes: TreeNode array) = 
+        [<CustomOperation "nodes">]
+        member __.Nodes(node: TreeNode, subNodes: TreeNode array) = 
             node.AddNodes(subNodes) |> ignore
             node
 
-        [<CustomOperation "add_node_renderable">]
-        member __.AddNodeRenderable(node: TreeNode, renderable: IRenderable) = 
+        [<CustomOperation "node_renderable">]
+        member __.NodeRenderable(node: TreeNode, renderable: IRenderable) = 
             node.AddNode(renderable) |> ignore
             node
 
-        [<CustomOperation "add_node_text">]
-        member __.AddNodeText(node: TreeNode, text: string) = 
+        [<CustomOperation "node_text">]
+        member __.NodeText(node: TreeNode, text: string) = 
             node.AddNode(text) |> ignore
             node
 

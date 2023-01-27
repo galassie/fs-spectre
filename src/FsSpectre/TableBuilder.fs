@@ -20,11 +20,11 @@ module TableBuilder =
             table.Width <- width
             table
 
-        [<CustomOperation "hide_headers">]
-        member __.HideHeaders(table: Table) = table.HideHeaders()
+        [<CustomOperation "no_headers">]
+        member __.NoHeaders(table: Table) = table.HideHeaders()
 
-        [<CustomOperation "hide_footers">]
-        member __.HideFooters(table: Table) = table.HideFooters()
+        [<CustomOperation "no_footers">]
+        member __.NoFooters(table: Table) = table.HideFooters()
 
         [<CustomOperation "border">]
         member __.Border(table: Table, tableBorder: TableBorder) = 
@@ -34,26 +34,26 @@ module TableBuilder =
         [<CustomOperation "no_border">]
         member __.NoBorder(table: Table) = table.NoBorder()
 
-        [<CustomOperation "add_column">]
-        member __.AddColumn(table: Table, column: TableColumn) = table.AddColumn(column)
+        [<CustomOperation "column">]
+        member __.Column(table: Table, column: TableColumn) = table.AddColumn(column)
 
-        [<CustomOperation "add_columns">]
-        member __.AddColumns(table: Table, column: TableColumn array) = table.AddColumns(column)
+        [<CustomOperation "columns">]
+        member __.Columns(table: Table, column: TableColumn array) = table.AddColumns(column)
 
-        [<CustomOperation "add_column_text">]
-        member __.AddColumnText(table: Table, text: string) = table.AddColumn(text)
+        [<CustomOperation "column_text">]
+        member __.ColumnText(table: Table, text: string) = table.AddColumn(text)
 
-        [<CustomOperation "add_columns_text">]
-        member __.AddColumnsText(table: Table, texts: string array) = table.AddColumns(texts)
+        [<CustomOperation "columns_text">]
+        member __.ColumnsText(table: Table, texts: string array) = table.AddColumns(texts)
 
-        [<CustomOperation "add_empty_row">]
-        member __.AddEmptyRow(table: Table) = table.AddEmptyRow()
+        [<CustomOperation "empty_row">]
+        member __.EmptyRow(table: Table) = table.AddEmptyRow()
 
-        [<CustomOperation "add_row">]
-        member __.AddRow(table: Table, columns: IRenderable array) = table.AddRow(columns)
+        [<CustomOperation "row">]
+        member __.Row(table: Table, columns: IRenderable array) = table.AddRow(columns)
 
-        [<CustomOperation "add_row_text">]
-        member __.AddRow(table: Table, columns: string array) = table.AddRow(columns)
+        [<CustomOperation "row_text">]
+        member __.RowText(table: Table, columns: string array) = table.AddRow(columns)
 
     
     let table = TableBuilder()
