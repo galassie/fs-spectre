@@ -29,6 +29,30 @@ table {
 
     empty_row
     row [| 
+        markup { text "[red]Colors[/]" }
+        table {
+            collapse
+            no_headers
+            no_border
+
+            column (tableColumn { header "Desc"; pad_right 3 })
+            column (tableColumn { header "Colors"; pad_right 0 })
+            row [|
+                markup {
+                    text ("✓ [bold grey]NO_COLOR support[/]\n"+
+                        "✓ [bold green]3-bit color[/]\n" +
+                        "✓ [bold blue]4-bit color[/]\n" +
+                        "✓ [bold purple]8-bit color[/]\n" +
+                        "✓ [bold yellow]Truecolor (16.7 million)[/]\n" +
+                        "✓ [bold aqua]Automatic color conversion[/]")
+                }
+                ColorBox(6)
+            |]
+        }
+    |]
+
+    empty_row
+    row [| 
         markup { text "[red]OS[/]" }
         grid {
             expand

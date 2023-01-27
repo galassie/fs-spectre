@@ -7,6 +7,7 @@
     <PackageReference Include="Spectre.Console" Version="0.46.0" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ColorBox.fs" />
     <Compile Include="TextBuilder.fs" />
     <Compile Include="MarkupBuilder.fs" />
     <Compile Include="RuleBuilder.fs" />
