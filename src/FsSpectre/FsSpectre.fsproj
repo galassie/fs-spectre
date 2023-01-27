@@ -10,6 +10,7 @@
     <Compile Include="MarkupBuilder.fs" />
     <Compile Include="RuleBuilder.fs" />
     <Compile Include="SelectionPromptBuilder.fs" />
+    <Compile Include="BreakdownChartBuilder.fs" />
     <Compile Include="TreeNodeBuilder.fs" />
     <Compile Include="TreeBuilder.fs" />
     <Compile Include="TableTitleBuilder.fs" />
