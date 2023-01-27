@@ -12,5 +12,7 @@
     <Compile Include="SelectionPromptBuilder.fs" />
     <Compile Include="TreeNodeBuilder.fs" />
     <Compile Include="TreeBuilder.fs" />
+    <Compile Include="TableTitleBuilder.fs" />
+    <Compile Include="TableBuilder.fs" />
   </ItemGroup>
 </Project>
