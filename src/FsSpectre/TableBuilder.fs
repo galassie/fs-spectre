@@ -13,6 +13,7 @@ module TableBuilder =
         [<CustomOperation "title">]
         member __.Title(table: Table, title: TableTitle) = 
             table.Title <- title
+            table
 
         [<CustomOperation "width">]
         member __.Width(table: Table, width: int) = 
