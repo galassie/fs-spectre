@@ -14,6 +14,9 @@ module GridBuilder =
             grid.Expand <- true
             grid
 
+        [<CustomOperation "collapse">]
+        member __.Collapse(grid: Grid) = grid.Collapse()
+
         [<CustomOperation "number_of_columns">]
         member __.NodeText(grid: Grid, count: int) = grid.AddColumns(count)
 

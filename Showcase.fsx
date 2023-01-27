@@ -117,5 +117,27 @@ table {
             |]
         }
     |]
+
+    empty_row
+    row [|
+        markup { text "[red]Tables and Trees[/]" }
+        grid {
+            collapse
+            number_of_columns 2
+            row [|
+                panel {
+                    border_color Color.Grey
+                    content_renderable (breakdownChart {
+                        show_percentage
+                        full_size
+                        item "C#" 82 Color.Green
+                        item "PowerShell" 13 Color.Red
+                        item "Bash" 5 Color.Blue
+                    })
+                }
+                
+            |]
+        }
+    |]
 }
 |> AnsiConsole.Write

@@ -12,6 +12,8 @@
     <Compile Include="RuleBuilder.fs" />
     <Compile Include="SelectionPromptBuilder.fs" />
     <Compile Include="BreakdownChartBuilder.fs" />
+    <Compile Include="PanelHeaderBuilder.fs" />
+    <Compile Include="PanelBuilder.fs" />
     <Compile Include="GridColumnBuilder.fs" />
     <Compile Include="GridBuilder.fs" />
     <Compile Include="TreeNodeBuilder.fs" />
