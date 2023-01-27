@@ -22,6 +22,12 @@ module TableColumnBuilder =
             tableColumn.NoWrap <- true
             tableColumn
 
+        [<CustomOperation "left_aligned">]
+        member __.LeftAligned(tableColumn: TableColumn) = tableColumn.LeftAligned()
+
+        [<CustomOperation "centerd">]
+        member __.Centered(tableColumn: TableColumn) = tableColumn.Centered()
+
         [<CustomOperation "right_aligned">]
         member __.RightAligned(tableColumn: TableColumn) = tableColumn.RightAligned()
 
