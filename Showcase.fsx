@@ -1,8 +1,11 @@
 #r "nuget: Spectre.Console, 0.46.0"
 #r "src/FsSpectre/bin/Debug/net6.0/FsSpectre.dll"
 
+open System
 open Spectre.Console
 open FsSpectre
+
+let generateException () = try raise (InvalidOperationException("This is invalid!")) with | ex -> ex
 
 table {
     title_text "[u][yellow]Spectre.Console[/] [b]Features[/][/]"
@@ -146,5 +149,18 @@ table {
             |]
         }
     |]
+
+    empty_row
+    row [|
+        markup { text "[red]Exceptions[/]" }
+        generateException().GetRenderable()
+    |]
+
+    empty_row
+    row_text [|
+        "[red]+ Much more![/]"
+        "Tables, Grids, Trees, Progress bars, Status, Bar charts, Calendars, Figlet, Images, Text prompts, List boxes, Separators, Pretty exceptions, Canvas, CLI parsing"
+    |]
+    empty_row
 }
 |> AnsiConsole.Write
