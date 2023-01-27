@@ -1,7 +1,6 @@
 namespace FsSpectre
 
 open Spectre.Console
-open Spectre.Console.Rendering
 
 [<AutoOpen>]
 module GridColumnBuilder =

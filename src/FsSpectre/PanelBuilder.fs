@@ -2,6 +2,7 @@ namespace FsSpectre
 
 open System
 open Spectre.Console
+open Spectre.Console.Rendering
 
 [<AutoOpen>]
 module PanelBuilder =
@@ -13,7 +14,7 @@ module PanelBuilder =
         member __.Content(_, text: string) = Panel(text)
 
         [<CustomOperation "content_renderable">]
-        member __.ContentRenderable(_, text: string) = Panel(text)
+        member __.ContentRenderable(_, renderable: IRenderable) = Panel(renderable)
 
         [<CustomOperation "border_color">]
         member __.BorderColor(panel: Panel, color: Color) = panel.BorderColor(color)

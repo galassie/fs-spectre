@@ -11,6 +11,7 @@
     <Compile Include="MarkupBuilder.fs" />
     <Compile Include="RuleBuilder.fs" />
     <Compile Include="SelectionPromptBuilder.fs" />
+    <Compile Include="BarChartBuilder.fs" />
     <Compile Include="BreakdownChartBuilder.fs" />
     <Compile Include="PanelHeaderBuilder.fs" />
     <Compile Include="PanelBuilder.fs" />

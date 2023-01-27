@@ -130,12 +130,19 @@ table {
                     content_renderable (breakdownChart {
                         show_percentage
                         full_size
-                        item "C#" 82 Color.Green
+                        item "F#" 82 Color.Violet
                         item "PowerShell" 13 Color.Red
                         item "Bash" 5 Color.Blue
                     })
                 }
-                
+                panel {
+                    border_color Color.Grey
+                    content_renderable (barChart {
+                        item "Apple" 32 Color.Green
+                        item "Oranges" 13 Color.Orange1
+                        item "Bananas" 22 Color.Yellow
+                    })
+                }
             |]
         }
     |]
