@@ -24,11 +24,13 @@ dotnet build
 
 ## Showcase
 
-To see an example, execute the `Showcase.fsx` with the following command (you need to build first your application):
+To see an example, execute the `Showcase.fsx` with the following command (you need to build the library first):
 
 ``` shell
 dotnet fsi Showcase.fsx
 ```
+
+![Showcase](./assets/Showcase.png)
 
 ## Contributing
 
