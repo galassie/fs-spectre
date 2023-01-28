@@ -8,7 +8,7 @@
 
     <!-- NuGet config -->
     <PackageId>FsSpectre</PackageId>
-    <Version>0.1.0</Version>
+    <Version>0.1.1</Version>
     <Authors>Enrico Galassi</Authors>
     <PackageTags>fsharp;cli;dotnet;console-application;fsharp-console;</PackageTags>
     <PackageProjectUrl>https://github.com/galassie/fs-spectre</PackageProjectUrl>
@@ -26,7 +26,7 @@
   </ItemGroup>
   
   <ItemGroup>
-    <None Include="../../assets/Showcase.png" Pack="true" PackagePath="/assets"/>
+    <None Include="../../assets/Showcase.png" Pack="true" PackagePath="/assets/"/>
     <None Include="../../README.md" Pack="true" PackagePath="/"/>
   </ItemGroup>
 

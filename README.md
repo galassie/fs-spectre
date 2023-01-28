@@ -25,6 +25,53 @@ cd fs-spectre
 dotnet build
 ```
 
+## Examples
+
+### Table
+
+```csharp
+var table = new Table();
+table.AddColumn("Foo");
+table.AddColumn(new TableColumn("Bar").Centered());
+table.AddRow("Baz", "[green]Qux[/]");
+table.AddRow(new Markup("[blue]Corgi[/]"), new Panel("Waldo"));
+AnsiConsole.Write(table);
+```
+
+With FsSpectre:
+```fsharp
+table {
+    column_text ""
+    column (tableColumn { header "Feature"; centerd })
+    row_text [| "Baz"; "[green]Qux[/]" |]
+    row [| markup { text "[blue]Corgi[/]" }; panel { content "Waldo" } |]
+} |> AnsiConsole.Write
+```
+
+### Bar Chart
+
+```csharp
+AnsiConsole.Write(new BarChart()
+    .Width(60)
+    .Label("[green bold underline]Number of fruits[/]")
+    .CenterLabel()
+    .AddItem("Apple", 12, Color.Yellow)
+    .AddItem("Orange", 54, Color.Green)
+    .AddItem("Banana", 33, Color.Red));
+```
+
+With FsSpectre:
+```fsharp
+barChart {
+    width 60
+    label "[green bold underline]Number of fruits[/]"
+    center_label
+    item "Apple" 12 Color.Yellow
+    item "Oranges" 54 Color.Green
+    item "Bananas" 33 Color.Red
+} |> AnsiConsole.Write
+```
+
 ## Showcase
 
 To see an example, execute the `Showcase.fsx` with the following command (you need to build the library first):
