@@ -2,10 +2,34 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
+
+    <Title>Spectre.Console with with F# style.</Title>
+    <Description>FsSpectre is a small library that extends Spectre.Console and allow to write beautiful console applications in a declarative and more F#-friendly way.</Description>
+
+    <!-- NuGet config -->
+    <PackageId>FsSpectre</PackageId>
+    <Version>0.1.0</Version>
+    <Authors>Enrico Galassi</Authors>
+    <PackageTags>fsharp;cli;dotnet;console-application;fsharp-console;</PackageTags>
+    <PackageProjectUrl>https://github.com/galassie/fs-spectre</PackageProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
+    <!-- <PackageIcon>icon.png</PackageIcon> -->
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/galassie/fs-spectre</RepositoryUrl>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Spectre.Console" Version="0.46.0" />
   </ItemGroup>
+  
+  <ItemGroup>
+    <None Include="../../assets/Showcase.png" Pack="true" PackagePath="/assets"/>
+    <None Include="../../README.md" Pack="true" PackagePath="/"/>
+  </ItemGroup>
+
   <ItemGroup>
     <Compile Include="ColorBox.fs" />
     <Compile Include="TextBuilder.fs" />
