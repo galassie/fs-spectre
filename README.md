@@ -1,4 +1,7 @@
 # FsSpectre
+
+[![Build status](https://ci.appveyor.com/api/projects/status/4nb6f3882i39um3v?svg=true)](https://ci.appveyor.com/project/galassie/fs-spectre)
+
 [Spectre.Console](https://spectreconsole.net/) with F# style.
 
 FsSpectre is a small library that extends Spectre.Console and allow to write beautiful console applications in a declarative and more F#-friendly way.
