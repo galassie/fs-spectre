@@ -1,5 +1,34 @@
 # FsSpectre
-[Spectre.Console](https://spectreconsole.net/) with F# Computation Expressions.
+[Spectre.Console](https://spectreconsole.net/) with F# style.
+
+FsSpectre is a small library that extends Spectre.Console and allow to write beautiful console applications in a declarative and more F#-friendly way.
+It leverages [Computation Expressions](https://learn.microsoft.com/en-us/dotnet/fsharp/language-reference/computation-expressions) to create the widgets in a declarative style.
+
+## Add package
+
+If you want to add this package to your project, execute the following command:
+
+``` shell
+dotnet add package FsSpectre
+```
+
+## Build on your machine
+
+If you want to build this library on your machine, execute the following commands:
+
+``` shell
+git clone git@github.com:galassie/fs-spectre.git
+cd fs-spectre
+dotnet build
+```
+
+## Showcase
+
+To see an example, execute the `Showcase.fsx` with the following command (you need to build first your application):
+
+``` shell
+dotnet fsi Showcase.fsx
+```
 
 ## Contributing
 
