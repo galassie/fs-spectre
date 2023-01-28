@@ -29,6 +29,7 @@ dotnet build
 
 ### Table
 
+With C# + Spectre.Console:
 ```csharp
 var table = new Table();
 table.AddColumn("Foo");
@@ -38,7 +39,7 @@ table.AddRow(new Markup("[blue]Corgi[/]"), new Panel("Waldo"));
 AnsiConsole.Write(table);
 ```
 
-With FsSpectre:
+With F# + FsSpectre:
 ```fsharp
 table {
     column_text ""
@@ -50,6 +51,7 @@ table {
 
 ### Bar Chart
 
+With C# + Spectre.Console:
 ```csharp
 AnsiConsole.Write(new BarChart()
     .Width(60)
@@ -60,7 +62,7 @@ AnsiConsole.Write(new BarChart()
     .AddItem("Banana", 33, Color.Red));
 ```
 
-With FsSpectre:
+With F# + FsSpectre:
 ```fsharp
 barChart {
     width 60
