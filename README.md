@@ -88,7 +88,7 @@ dotnet fsi Showcase.fsx
 
 Code contributions are more than welcome! 😻
 
-Please commit any pull requests against the `master` branch.  
+Please commit any pull requests against the `main` branch.  
 If you find any issue, please [report it](https://github.com/galassie/fs-spectre/issues)!
 
 ## License
