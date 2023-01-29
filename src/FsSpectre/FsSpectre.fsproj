@@ -31,11 +31,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Include="Prompts/SelectionPromptBuilder.fs" />
+    <Compile Include="Prompts/TextPromptBuilder.fs" />
     <Compile Include="ColorBox.fs" />
     <Compile Include="TextBuilder.fs" />
     <Compile Include="MarkupBuilder.fs" />
     <Compile Include="RuleBuilder.fs" />
-    <Compile Include="SelectionPromptBuilder.fs" />
     <Compile Include="BarChartBuilder.fs" />
     <Compile Include="BreakdownChartBuilder.fs" />
     <Compile Include="PanelHeaderBuilder.fs" />
