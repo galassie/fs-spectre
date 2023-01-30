@@ -34,20 +34,20 @@
     <Compile Include="Prompts/TextPromptBuilder.fs" />
     <Compile Include="Prompts/SelectionPromptBuilder.fs" />
     <Compile Include="Prompts/MultiSelectionPromptBuilder.fs" />
-    <Compile Include="ColorBox.fs" />
-    <Compile Include="TextBuilder.fs" />
-    <Compile Include="MarkupBuilder.fs" />
-    <Compile Include="RuleBuilder.fs" />
-    <Compile Include="BarChartBuilder.fs" />
-    <Compile Include="BreakdownChartBuilder.fs" />
-    <Compile Include="PanelHeaderBuilder.fs" />
-    <Compile Include="PanelBuilder.fs" />
-    <Compile Include="GridColumnBuilder.fs" />
-    <Compile Include="GridBuilder.fs" />
-    <Compile Include="TreeNodeBuilder.fs" />
-    <Compile Include="TreeBuilder.fs" />
-    <Compile Include="TableTitleBuilder.fs" />
-    <Compile Include="TableColumnBuilder.fs" />
-    <Compile Include="TableBuilder.fs" />
+    <Compile Include="Widgets/TextBuilder.fs" />
+    <Compile Include="Widgets/MarkupBuilder.fs" />
+    <Compile Include="Widgets/PanelHeaderBuilder.fs" />
+    <Compile Include="Widgets/PanelBuilder.fs" />
+    <Compile Include="Widgets/RuleBuilder.fs" />
+    <Compile Include="Widgets/BarChartBuilder.fs" />
+    <Compile Include="Widgets/BreakdownChartBuilder.fs" />
+    <Compile Include="Widgets/GridColumnBuilder.fs" />
+    <Compile Include="Widgets/GridBuilder.fs" />
+    <Compile Include="Widgets/TreeNodeBuilder.fs" />
+    <Compile Include="Widgets/TreeBuilder.fs" />
+    <Compile Include="Widgets/TableTitleBuilder.fs" />
+    <Compile Include="Widgets/TableColumnBuilder.fs" />
+    <Compile Include="Widgets/TableBuilder.fs" />
+    <Compile Include="Extras/ColorBox.fs" />
   </ItemGroup>
 </Project>
