@@ -31,8 +31,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="Prompts/SelectionPromptBuilder.fs" />
     <Compile Include="Prompts/TextPromptBuilder.fs" />
+    <Compile Include="Prompts/SelectionPromptBuilder.fs" />
+    <Compile Include="Prompts/MultiSelectionPromptBuilder.fs" />
     <Compile Include="ColorBox.fs" />
     <Compile Include="TextBuilder.fs" />
     <Compile Include="MarkupBuilder.fs" />

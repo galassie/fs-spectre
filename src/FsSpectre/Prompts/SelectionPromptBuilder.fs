@@ -21,7 +21,7 @@ module SelectionPromptBuilder =
             selectionPrompt.PageSize <- pageSize
             selectionPrompt
 
-        [<CustomOperation "moreChoicesText">]
+        [<CustomOperation "more_choices_text">]
         member __.MoreChoicesText(selectionPrompt: SelectionPrompt<'T>, moreChoicesText: string) =
             selectionPrompt.MoreChoicesText <- moreChoicesText
             selectionPrompt
