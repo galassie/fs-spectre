@@ -11,17 +11,17 @@ module TableBuilder =
         member __.Yield _ = Table()
 
         [<CustomOperation "title">]
-        member __.Title(table: Table, title: TableTitle) = 
+        member __.Title(table: Table, title: TableTitle) =
             table.Title <- title
             table
 
         [<CustomOperation "title_text">]
-        member __.TitleText(table: Table, text: string) = 
+        member __.TitleText(table: Table, text: string) =
             table.Title <- TableTitle(text)
             table
-    
+
         [<CustomOperation "width">]
-        member __.Width(table: Table, width: int) = 
+        member __.Width(table: Table, width: int) =
             table.Width <- width
             table
 
@@ -44,7 +44,7 @@ module TableBuilder =
         member __.NoFooters(table: Table) = table.HideFooters()
 
         [<CustomOperation "border">]
-        member __.Border(table: Table, tableBorder: TableBorder) = 
+        member __.Border(table: Table, tableBorder: TableBorder) =
             table.Border <- tableBorder
             table
 
@@ -72,5 +72,5 @@ module TableBuilder =
         [<CustomOperation "row_text">]
         member __.RowText(table: Table, columns: string array) = table.AddRow(columns)
 
-    
+
     let table = TableBuilder()

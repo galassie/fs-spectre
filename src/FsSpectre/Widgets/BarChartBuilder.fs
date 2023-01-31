@@ -9,7 +9,7 @@ module BarChartBuilder =
         member __.Yield _ = BarChart()
 
         [<CustomOperation "label">]
-        member __.FullSize(barChart: BarChart, label: string) = 
+        member __.FullSize(barChart: BarChart, label: string) =
             barChart.Label <- label
             barChart
 

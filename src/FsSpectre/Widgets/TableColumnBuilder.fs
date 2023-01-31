@@ -18,12 +18,12 @@ module TableColumnBuilder =
         member __.HeaderRenderable(_, renderable: IRenderable) = TableColumn(renderable)
 
         [<CustomOperation "footer">]
-        member __.Footer(tableColumn: TableColumn, footer: string) = 
+        member __.Footer(tableColumn: TableColumn, footer: string) =
             tableColumn.Footer <- Markup(footer)
             tableColumn
 
         [<CustomOperation "footer_renderable">]
-        member __.FooterRenderable(tableColumn: TableColumn, renderable: IRenderable) = 
+        member __.FooterRenderable(tableColumn: TableColumn, renderable: IRenderable) =
             tableColumn.Footer <- renderable
             tableColumn
 

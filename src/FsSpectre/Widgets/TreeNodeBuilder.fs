@@ -17,22 +17,22 @@ module TreeNodeBuilder =
         member __.RootText(_, text: string) = TreeNode(Markup(text))
 
         [<CustomOperation "node">]
-        member __.Node(node: TreeNode, subNode: TreeNode) = 
+        member __.Node(node: TreeNode, subNode: TreeNode) =
             node.AddNode(subNode) |> ignore
             node
 
         [<CustomOperation "nodes">]
-        member __.Nodes(node: TreeNode, subNodes: TreeNode array) = 
+        member __.Nodes(node: TreeNode, subNodes: TreeNode array) =
             node.AddNodes(subNodes) |> ignore
             node
 
         [<CustomOperation "node_renderable">]
-        member __.NodeRenderable(node: TreeNode, renderable: IRenderable) = 
+        member __.NodeRenderable(node: TreeNode, renderable: IRenderable) =
             node.AddNode(renderable) |> ignore
             node
 
         [<CustomOperation "node_text">]
-        member __.NodeText(node: TreeNode, text: string) = 
+        member __.NodeText(node: TreeNode, text: string) =
             node.AddNode(text) |> ignore
             node
 

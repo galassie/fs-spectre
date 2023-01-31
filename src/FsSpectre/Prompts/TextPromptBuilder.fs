@@ -13,7 +13,7 @@ module TextPromptBuilder =
         member __.Title(_, text: string) = TextPrompt<'T>(text)
 
         [<CustomOperation "prompt_style">]
-        member __.PromptStyle(textPrompt: TextPrompt<'T>, style: Style) = 
+        member __.PromptStyle(textPrompt: TextPrompt<'T>, style: Style) =
             textPrompt.PromptStyle <- style
             textPrompt
 
@@ -27,17 +27,17 @@ module TextPromptBuilder =
         member __.HideInput(textPrompt: TextPrompt<'T>) = textPrompt.Secret(Nullable())
 
         [<CustomOperation "allow_empty">]
-        member __.AllowEmpty(textPrompt: TextPrompt<'T>) = 
+        member __.AllowEmpty(textPrompt: TextPrompt<'T>) =
             textPrompt.AllowEmpty <- true
             textPrompt
-        
+
         [<CustomOperation "validation_error_message">]
-        member __.ValidationErrorMessage(textPrompt: TextPrompt<'T>, validationErrorMessage: string) = 
+        member __.ValidationErrorMessage(textPrompt: TextPrompt<'T>, validationErrorMessage: string) =
             textPrompt.ValidationErrorMessage <- validationErrorMessage
             textPrompt
-        
+
         [<CustomOperation "validate">]
-        member __.Validate(textPrompt: TextPrompt<'T>, validator: 'T -> ValidationResult) = 
+        member __.Validate(textPrompt: TextPrompt<'T>, validator: 'T -> ValidationResult) =
             textPrompt.Validator <- validator
             textPrompt
 

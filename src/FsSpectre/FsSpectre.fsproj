@@ -50,6 +50,8 @@
     <Compile Include="Widgets/TableTitleBuilder.fs" />
     <Compile Include="Widgets/TableColumnBuilder.fs" />
     <Compile Include="Widgets/TableBuilder.fs" />
+    <Compile Include="Widgets/CalendarEventBuilder.fs" />
+    <Compile Include="Widgets/CalendarBuilder.fs" />
     <Compile Include="Extras/ColorBox.fs" />
   </ItemGroup>
 </Project>

@@ -13,7 +13,7 @@ module PanelHeaderBuilder =
         member __.Text(_, text: string) = PanelHeader(text)
 
         [<CustomOperation "justification">]
-        member __.Justification(panelHeader: PanelHeader, justify: Justify) = 
+        member __.Justification(panelHeader: PanelHeader, justify: Justify) =
             panelHeader.Justification <- justify
             panelHeader
 
