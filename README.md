@@ -84,6 +84,11 @@ dotnet fsi Showcase.fsx
 
 ![Showcase](./assets/Showcase.png)
 
+## Alternatives
+
+If you don't like this style of using Spectre.Console with Computation Expressions, check out these amazing projects: 
+- [SpectreCoff](https://github.com/EluciusFTW/SpectreCoff)
+
 ## Contributing
 
 Code contributions are more than welcome! 😻
