@@ -36,6 +36,8 @@
     <Compile Include="Prompts/MultiSelectionPromptBuilder.fs" />
     <Compile Include="Widgets/TextBuilder.fs" />
     <Compile Include="Widgets/MarkupBuilder.fs" />
+    <Compile Include="Widgets/ColumnsBuilder.fs" />
+    <Compile Include="Widgets/RowsBuilder.fs" />
     <Compile Include="Widgets/PanelHeaderBuilder.fs" />
     <Compile Include="Widgets/PanelBuilder.fs" />
     <Compile Include="Widgets/RuleBuilder.fs" />
