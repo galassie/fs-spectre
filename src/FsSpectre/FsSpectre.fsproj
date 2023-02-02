@@ -6,13 +6,13 @@
     <Description>FsSpectre is a small library that extends Spectre.Console and allow to write beautiful console applications in a declarative and more F#-friendly way.</Description>
     <!-- NuGet config -->
     <PackageId>FsSpectre</PackageId>
-    <Version>0.3.0</Version>
+    <Version>0.3.1</Version>
     <Authors>Enrico Galassi</Authors>
     <PackageTags>fsharp;cli;dotnet;console-application;fsharp-console;</PackageTags>
     <PackageProjectUrl>https://github.com/galassie/fs-spectre</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
-    <!-- <PackageIcon>icon.png</PackageIcon> -->
+    <PackageIcon>icon.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/galassie/fs-spectre</RepositoryUrl>
@@ -48,7 +48,7 @@
     <Compile Include="Extras/ColorBox.fs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="../../assets/Showcase.png" Pack="true" PackagePath="/assets/" />
+    <None Include="../../assets/icon.png" Pack="true" PackagePath="/" />
     <None Include="../../README.md" Pack="true" PackagePath="/" />
   </ItemGroup>
 </Project>

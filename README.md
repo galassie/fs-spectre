@@ -82,7 +82,7 @@ To see an example, execute the `Showcase.fsx` with the following command (you ne
 dotnet fsi Showcase.fsx
 ```
 
-![Showcase](./assets/Showcase.png)
+![Showcase](https://raw.githubusercontent.com/galassie/fs-spectre/main/assets/Showcase.png)
 
 ## Alternatives
 
