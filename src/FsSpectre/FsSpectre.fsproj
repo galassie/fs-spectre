@@ -2,10 +2,8 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-
     <Title>Spectre.Console with with F# style.</Title>
     <Description>FsSpectre is a small library that extends Spectre.Console and allow to write beautiful console applications in a declarative and more F#-friendly way.</Description>
-
     <!-- NuGet config -->
     <PackageId>FsSpectre</PackageId>
     <Version>0.2.0</Version>
@@ -18,19 +16,14 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/galassie/fs-spectre</RepositoryUrl>
+    <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="Spectre.Console" Version="0.46.0" />
   </ItemGroup>
-  
   <ItemGroup>
-    <None Include="../../assets/Showcase.png" Pack="true" PackagePath="/assets/"/>
-    <None Include="../../README.md" Pack="true" PackagePath="/"/>
-  </ItemGroup>
-
-  <ItemGroup>
+    <Compile Include="Syle.fs" />
     <Compile Include="Prompts/TextPromptBuilder.fs" />
     <Compile Include="Prompts/SelectionPromptBuilder.fs" />
     <Compile Include="Prompts/MultiSelectionPromptBuilder.fs" />
@@ -53,5 +46,9 @@
     <Compile Include="Widgets/CalendarEventBuilder.fs" />
     <Compile Include="Widgets/CalendarBuilder.fs" />
     <Compile Include="Extras/ColorBox.fs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="../../assets/Showcase.png" Pack="true" PackagePath="/assets/" />
+    <None Include="../../README.md" Pack="true" PackagePath="/" />
   </ItemGroup>
 </Project>
