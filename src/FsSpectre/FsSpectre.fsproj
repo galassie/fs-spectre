@@ -6,7 +6,7 @@
     <Description>FsSpectre is a small library that extends Spectre.Console and allow to write beautiful console applications in a declarative and more F#-friendly way.</Description>
     <!-- NuGet config -->
     <PackageId>FsSpectre</PackageId>
-    <Version>0.2.0</Version>
+    <Version>0.3.0</Version>
     <Authors>Enrico Galassi</Authors>
     <PackageTags>fsharp;cli;dotnet;console-application;fsharp-console;</PackageTags>
     <PackageProjectUrl>https://github.com/galassie/fs-spectre</PackageProjectUrl>
