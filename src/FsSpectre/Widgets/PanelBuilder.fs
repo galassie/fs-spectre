@@ -29,7 +29,7 @@ module PanelBuilder =
             panel.Header <- PanelHeader(text)
             panel
 
-        [<CustomOperation "Expand">]
+        [<CustomOperation "expand">]
         member __.Expand(panel: Panel) =
             panel.Expand <- true
             panel
