@@ -1,12 +1,17 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
+    <!-- General -->
+    <Title>FsSpectre</Title>
+    <Description>Spectre.Console with with F# style.</Description>
+    <!-- Build settings -->
     <TargetFrameworks>net6.0;netstandard2.0</TargetFrameworks>
+    <DebugType>portable</DebugType>
+    <OutputType>Library</OutputType>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <Title>Spectre.Console with with F# style.</Title>
-    <Description>FsSpectre is a small library that extends Spectre.Console and allow to write beautiful console applications in a declarative and more F#-friendly way.</Description>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <!-- NuGet config -->
     <PackageId>FsSpectre</PackageId>
-    <Version>0.3.2</Version>
+    <Version>0.3.3</Version>
     <Authors>Enrico Galassi</Authors>
     <PackageTags>fsharp;cli;dotnet;console-application;fsharp-console;</PackageTags>
     <PackageProjectUrl>https://github.com/galassie/fs-spectre</PackageProjectUrl>
@@ -16,8 +21,12 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/galassie/fs-spectre</RepositoryUrl>
+    
+    <!-- SourceLink settings -->
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Update="FSharp.Core" Version="6.0.0" />
@@ -39,6 +48,7 @@
     <Compile Include="Widgets/BreakdownChartBuilder.fs" />
     <Compile Include="Widgets/GridColumnBuilder.fs" />
     <Compile Include="Widgets/GridBuilder.fs" />
+    <Compile Include="Widgets/LayoutBuilder.fs" />
     <Compile Include="Widgets/TreeNodeBuilder.fs" />
     <Compile Include="Widgets/TreeBuilder.fs" />
     <Compile Include="Widgets/TableTitleBuilder.fs" />
