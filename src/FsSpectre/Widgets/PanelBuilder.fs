@@ -24,4 +24,19 @@ module PanelBuilder =
             panel.Header <- header
             panel
 
+        [<CustomOperation "header_text">]
+        member __.HeaderText(panel: Panel, text: string) =
+            panel.Header <- PanelHeader(text)
+            panel
+
+        [<CustomOperation "width">]
+        member __.Width(panel: Panel, width: int) =
+            panel.Width <- width
+            panel
+
+        [<CustomOperation "height">]
+        member __.Height(panel: Panel, height: int) =
+            panel.Height <- height
+            panel
+
     let panel = PanelBuilder()

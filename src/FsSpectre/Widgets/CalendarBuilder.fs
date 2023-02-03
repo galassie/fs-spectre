@@ -10,6 +10,9 @@ module CalendarBuilder =
     type CalendarBuilder() =
         member __.Yield _ = Calendar(DateTime.Now)
 
+        [<CustomOperation "default">]
+        member __.Default(calendar: Calendar) = calendar
+
         [<CustomOperation "year">]
         member __.Year(calendar: Calendar, year: int) =
             calendar.Year <- year
@@ -24,6 +27,9 @@ module CalendarBuilder =
         member __.Day(calendar: Calendar, day: int) =
             calendar.Day <- day
             calendar
+
+        [<CustomOperation "date_time">]
+        member __.DateTime(_, dateTime: DateTime) = Calendar(dateTime)
 
         [<CustomOperation "culture">]
         member __.Culture(calendar: Calendar, cultureInfo: CultureInfo) =

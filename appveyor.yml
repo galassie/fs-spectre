@@ -8,7 +8,7 @@ nuget:
 build_script:
   - dotnet build  -c Release
   - dotnet test   -c Release --no-build
-  - dotnet pack   -c Release --no-build -o ./deploy ./src/FsSpectre/FsSpectre.fsproj
+  - dotnet pack   -c Release --no-build --include-symbols -o ./deploy ./src/FsSpectre/FsSpectre.fsproj
 
 artifacts:
   - path: 'deploy/*.nupkg'
