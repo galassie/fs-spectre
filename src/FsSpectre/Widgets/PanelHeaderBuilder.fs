@@ -12,9 +12,13 @@ module PanelHeaderBuilder =
         [<CustomOperation "text">]
         member __.Text(_, text: string) = PanelHeader(text)
 
-        [<CustomOperation "justification">]
-        member __.Justification(panelHeader: PanelHeader, justify: Justify) =
-            panelHeader.Justification <- justify
-            panelHeader
+        [<CustomOperation "left_justified">]
+        member __.LeftJustified(panelHeader: PanelHeader) = panelHeader.LeftJustified()
+
+        [<CustomOperation "right_justified">]
+        member __.RightJustified(panelHeader: PanelHeader) = panelHeader.RightJustified()
+
+        [<CustomOperation "centered">]
+        member __.Centered(panelHeader: PanelHeader) = panelHeader.Centered()
 
     let panelHeader = PanelHeaderBuilder()

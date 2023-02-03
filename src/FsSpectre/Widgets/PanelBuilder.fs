@@ -29,6 +29,11 @@ module PanelBuilder =
             panel.Header <- PanelHeader(text)
             panel
 
+        [<CustomOperation "Expand">]
+        member __.Expand(panel: Panel) =
+            panel.Expand <- true
+            panel
+
         [<CustomOperation "width">]
         member __.Width(panel: Panel, width: int) =
             panel.Width <- width
