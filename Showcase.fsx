@@ -12,7 +12,7 @@ table {
 
     column (
         tableColumn {
-            header "Feature"
+            header_text "Feature"
             no_wrap
             right_aligned
             width 10
@@ -22,7 +22,7 @@ table {
 
     column (
         tableColumn {
-            header "Demonstration"
+            header_text "Demonstration"
             pad_right 0
         }
     )
@@ -35,8 +35,8 @@ table {
             no_headers
             no_border
 
-            column (tableColumn { header "Desc"; pad_right 3 })
-            column (tableColumn { header "Colors"; pad_right 0 })
+            column (tableColumn { header_text "Desc"; pad_right 3 })
+            column (tableColumn { header_text "Colors"; pad_right 0 })
             row [|
                 markup {
                     text ("✓ [bold grey]NO_COLOR support[/]\n"+
@@ -111,8 +111,8 @@ table {
                     simple_border
                     border_color Color.Grey
                     columns [|
-                        tableColumn { header "Overview" }
-                        tableColumn { footer "[grey]3 Files, 225 KiB[/]" }
+                        tableColumn { header_text "Overview" }
+                        tableColumn { footer_text "[grey]3 Files, 225 KiB[/]" }
                     |]
 
                     row [|
@@ -149,7 +149,6 @@ table {
     row [|
         markup { text "[red]Tables and Trees[/]" }
         grid {
-            collapse
             number_of_columns 2
             row [|
                 panel {
@@ -157,17 +156,17 @@ table {
                     content_renderable (breakdownChart {
                         show_percentage
                         full_size
-                        item "F#" 82 Color.Violet
-                        item "PowerShell" 13 Color.Red
-                        item "Bash" 5 Color.Blue
+                        item ("F#", 82, Color.Violet)
+                        item ("PowerShell", 13, Color.Red)
+                        item ("Bash", 5, Color.Blue)
                     })
                 }
                 panel {
                     border_color Color.Grey
                     content_renderable (barChart {
-                        item "Apple" 32 Color.Green
-                        item "Oranges" 13 Color.Orange1
-                        item "Bananas" 22 Color.Yellow
+                        item ("Apple", 32, Color.Green)
+                        item ("Oranges", 13, Color.Orange1)
+                        item ("Bananas", 22, Color.Yellow)
                     })
                 }
             |]

@@ -6,25 +6,45 @@ open Spectre.Console
 [<AutoOpen>]
 module TextBuilder =
 
+    type TextConfig =
+        { Text: string
+          Style: Style
+          Justification: Justify }
+
+        static member Default =
+            { Text = String.Empty
+              Style = Style.Plain
+              Justification = Justify.Left }
+
     type TextBuilder() =
-        member __.Yield _ = Text(String.Empty)
+        member __.Yield _ = TextConfig.Default
+
+        member __.Run(config: TextConfig) =
+            let result = Text(config.Text, config.Style)
+            result.Justify(config.Justification)
 
         [<CustomOperation "empty">]
-        member __.Text(text: Text) = text
+        member __.Empty(config: TextConfig) = { config with Text = String.Empty }
 
         [<CustomOperation "text">]
-        member __.Text(_, text: string) = Text(text)
+        member __.Text(config: TextConfig, text: string) = { config with Text = text }
 
-        [<CustomOperation "text_with_style">]
-        member __.TextWithStyle(_, text: string, style: Style) = Text(text, style)
+        [<CustomOperation "style">]
+        member __.Style(config: TextConfig, style: Style) = { config with Style = style }
 
         [<CustomOperation "left_justified">]
-        member __.LeftJustified(text: Text) = text.LeftJustified()
+        member __.LeftJustified(config: TextConfig) =
+            { config with
+                Justification = Justify.Left }
 
         [<CustomOperation "right_justified">]
-        member __.RightJustified(text: Text) = text.RightJustified()
+        member __.RightJustified(config: TextConfig) =
+            { config with
+                Justification = Justify.Right }
 
         [<CustomOperation "centered">]
-        member __.Centered(text: Text) = text.Centered()
+        member __.Centered(config: TextConfig) =
+            { config with
+                Justification = Justify.Center }
 
     let text = TextBuilder()

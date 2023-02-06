@@ -6,22 +6,45 @@ open Spectre.Console
 [<AutoOpen>]
 module MarkupBuilder =
 
+    type MarkupConfig =
+        { Text: string
+          Style: Style
+          Justification: Justify }
+
+        static member Default =
+            { Text = String.Empty
+              Style = Style.Plain
+              Justification = Justify.Left }
+
     type MarkupBuilder() =
-        member __.Yield _ = Markup(String.Empty)
+        member __.Yield _ = MarkupConfig.Default
+
+        member __.Run(config: MarkupConfig) =
+            let result = Markup(config.Text, config.Style)
+            result.Justify(config.Justification)
+
+        [<CustomOperation "empty">]
+        member __.Empty(config: MarkupConfig) = { config with Text = String.Empty }
 
         [<CustomOperation "text">]
-        member __.Text(_, text: string) = Markup(text)
+        member __.Text(config: MarkupConfig, text: string) = { config with Text = text }
 
-        [<CustomOperation "text_with_style">]
-        member __.TextWithStyle(_, text: string, style: Style) = Markup(text, style)
+        [<CustomOperation "style">]
+        member __.Style(config: MarkupConfig, style: Style) = { config with Style = style }
 
         [<CustomOperation "left_justified">]
-        member __.LeftJustified(markup: Markup) = markup.LeftJustified()
+        member __.LeftJustified(config: MarkupConfig) =
+            { config with
+                Justification = Justify.Left }
 
         [<CustomOperation "right_justified">]
-        member __.RightJustified(markup: Markup) = markup.RightJustified()
+        member __.RightJustified(config: MarkupConfig) =
+            { config with
+                Justification = Justify.Right }
 
         [<CustomOperation "centered">]
-        member __.Centered(markup: Markup) = markup.Centered()
+        member __.Centered(config: MarkupConfig) =
+            { config with
+                Justification = Justify.Center }
 
     let markup = MarkupBuilder()

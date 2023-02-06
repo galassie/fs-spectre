@@ -7,33 +7,46 @@ open Spectre.Console.Rendering
 [<AutoOpen>]
 module TreeBuilder =
 
+    type TreeConfig =
+        { Label: IRenderable
+          Nodes: TreeNode array }
+
+        static member Default =
+            { Label = Markup(String.Empty)
+              Nodes = Array.empty<TreeNode> }
+
     type TreeBuilder() =
-        member __.Yield _ = Tree(String.Empty)
+        member __.Yield _ = TreeConfig.Default
+
+        member __.Run(config: TreeConfig) = 
+            let result = Tree(config.Label)
+            result.AddNodes(config.Nodes)
+            result
 
         [<CustomOperation "label">]
-        member __.Label(_, label: string) = Tree(label)
+        member __.RootText(config: TreeConfig, text: string) = { config with Label = Markup(text) }
 
         [<CustomOperation "label_renderable">]
-        member __.LabelRenderable(_, renderable: IRenderable) = Tree(renderable)
+        member __.LabelRenderable(config: TreeConfig, renderable: IRenderable) = { config with Label = renderable }
 
         [<CustomOperation "node">]
-        member __.Node(tree: Tree, subNode: TreeNode) =
-            tree.AddNode(subNode) |> ignore
-            tree
+        member __.Node(config: TreeConfig, subNode: TreeNode) =
+            { config with
+                Nodes = Array.append config.Nodes [| subNode |] }
 
         [<CustomOperation "nodes">]
-        member __.Nodes(tree: Tree, subNodes: TreeNode array) =
-            tree.AddNodes(subNodes) |> ignore
-            tree
+        member __.Nodes(config: TreeConfig, subNodes: TreeNode array) =
+            { config with
+                Nodes = Array.append config.Nodes subNodes }
 
         [<CustomOperation "node_renderable">]
-        member __.NodeRenderable(tree: Tree, renderable: IRenderable) =
-            tree.AddNode(renderable) |> ignore
-            tree
+        member __.NodeRenderable(config: TreeConfig, renderable: IRenderable) =
+            { config with
+                Nodes = Array.append config.Nodes [| TreeNode(renderable) |] }
 
         [<CustomOperation "node_text">]
-        member __.NodeText(tree: Tree, text: string) =
-            tree.AddNode(text) |> ignore
-            tree
+        member __.NodeText(config: TreeConfig, text: string) =
+            { config with
+                Nodes = Array.append config.Nodes [| TreeNode(Markup(text)) |] }
 
     let tree = TreeBuilder()

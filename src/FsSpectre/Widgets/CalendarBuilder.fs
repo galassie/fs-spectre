@@ -7,46 +7,52 @@ open Spectre.Console
 [<AutoOpen>]
 module CalendarBuilder =
 
+    type CalendarConfig =
+        { DateTime: DateTime
+          CultureInfo: CultureInfo
+          ShowHeader: bool
+          HeaderStyle: Style
+          HighlightStyle: Style
+          Events: CalendarEvent array }
+
+        static member Default(dateTime: DateTime) =
+            { DateTime = dateTime
+              CultureInfo = CultureInfo.CurrentCulture
+              ShowHeader = true
+              HeaderStyle = Style.Plain
+              HighlightStyle = Style.Plain
+              Events = Array.empty<CalendarEvent> }
+
     type CalendarBuilder() =
-        member __.Yield _ = Calendar(DateTime.Now)
+        member __.Yield _ = CalendarConfig.Default(DateTime.Now)
+
+        member __.Run(config: CalendarConfig) =
+            let result = Calendar(config.DateTime)
+            result.Culture <- config.CultureInfo
+            result.HeaderStyle <- config.HeaderStyle
+            result.HightlightStyle <- config.HighlightStyle
+            config.Events |> Array.map result.CalendarEvents.Add |> ignore
+            result
 
         [<CustomOperation "default">]
-        member __.Default(calendar: Calendar) = calendar
-
-        [<CustomOperation "year">]
-        member __.Year(calendar: Calendar, year: int) =
-            calendar.Year <- year
-            calendar
-
-        [<CustomOperation "month">]
-        member __.Month(calendar: Calendar, month: int) =
-            calendar.Month <- month
-            calendar
-
-        [<CustomOperation "day">]
-        member __.Day(calendar: Calendar, day: int) =
-            calendar.Day <- day
-            calendar
+        member __.Default(config: CalendarConfig) = config
 
         [<CustomOperation "date_time">]
-        member __.DateTime(_, dateTime: DateTime) = Calendar(dateTime)
+        member __.DateTime(config: CalendarConfig, dateTime: DateTime) = { config with DateTime = dateTime }
 
         [<CustomOperation "culture">]
-        member __.Culture(calendar: Calendar, cultureInfo: CultureInfo) =
-            calendar.Culture <- cultureInfo
-            calendar
+        member __.Culture(config: CalendarConfig, cultureInfo: CultureInfo) =
+            { config with
+                CultureInfo = cultureInfo }
 
         [<CustomOperation "hide_header">]
-        member __.HideHeader(calendar: Calendar) = calendar.HideHeader()
-
-        [<CustomOperation "event">]
-        member __.Event(calendar: Calendar, event: CalendarEvent) =
-            calendar.CalendarEvents.Add(event)
-            calendar
+        member __.HideHeader(config: CalendarConfig) =
+            { config with
+                ShowHeader = false }
 
         [<CustomOperation "events">]
-        member __.Events(calendar: Calendar, events: CalendarEvent array) =
-            events |> Array.map calendar.CalendarEvents.Add |> ignore
-            calendar
+        member __.Events(config: CalendarConfig, events: CalendarEvent array) =
+            { config with
+                Events = Array.append config.Events events }
 
     let calendar = CalendarBuilder()

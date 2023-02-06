@@ -1,41 +1,72 @@
 namespace FsSpectre
 
+open System
 open Spectre.Console
 
 [<AutoOpen>]
 module BarChartBuilder =
 
+    type BarChartConfig =
+        { Label: string
+          LabelAlignment: Justify
+          Width: int option
+          ShowValues: bool
+          Items: (string * float * Color) array }
+
+        static member Default =
+            { Label = String.Empty
+              LabelAlignment = Justify.Center
+              Width = None
+              ShowValues = true
+              Items = Array.empty<(string * float * Color)> }
+
     type BarChartBuilder() =
-        member __.Yield _ = BarChart()
+        member __.Yield _ = BarChartConfig.Default
+
+        member __.Run(config: BarChartConfig) =
+            let result = BarChart()
+            result.Label <- config.Label
+            result.LabelAlignment <- config.LabelAlignment
+            config.Width |> Option.iter (fun w -> result.Width <- w)
+            result.ShowValues <- config.ShowValues
+
+            config.Items
+            |> Array.iter (fun (label, value, color) -> result.AddItem(label, value, color) |> ignore)
+
+            result
 
         [<CustomOperation "label">]
-        member __.FullSize(barChart: BarChart, label: string) =
-            barChart.Label <- label
-            barChart
+        member __.FullSize(config: BarChartConfig, label: string) = { config with Label = label }
 
-        [<CustomOperation "left_align_label">]
-        member __.LeftAlignLabel(barChart: BarChart) = barChart.LeftAlignLabel()
+        [<CustomOperation "left_aligned_label">]
+        member __.LeftAlignedLabel(config: BarChartConfig) =
+            { config with
+                LabelAlignment = Justify.Left }
 
-        [<CustomOperation "center_label">]
-        member __.CenterLabel(barChart: BarChart) = barChart.CenterLabel()
+        [<CustomOperation "centered_label">]
+        member __.CenteredLabel(config: BarChartConfig) =
+            { config with
+                LabelAlignment = Justify.Center }
 
-        [<CustomOperation "right_align_label">]
-        member __.RightAlignLabel(barChart: BarChart) = barChart.RightAlignLabel()
+        [<CustomOperation "right_aligned_label">]
+        member __.RightAlignedLabel(config: BarChartConfig) =
+            { config with
+                LabelAlignment = Justify.Right }
 
         [<CustomOperation "width">]
-        member __.Width(barChart: BarChart, width: int) =
-            barChart.Width <- width
-            barChart
+        member __.Width(config: BarChartConfig, width: int) = { config with Width = Some width }
 
         [<CustomOperation "hide_values">]
-        member __.HideValues(barChart: BarChart) = barChart.HideValues()
+        member __.HideValues(config: BarChartConfig) = { config with ShowValues = false }
 
         [<CustomOperation "item">]
-        member __.Item(barChart: BarChart, label: string, value: float, color: Color) =
-            barChart.AddItem(label, value, color)
+        member __.Item(config: BarChartConfig, item: (string * float * Color)) =
+            { config with
+                Items = Array.append config.Items [| item |] }
 
         [<CustomOperation "items">]
-        member __.Items(barChart: BarChart, elements: 'T array, converter: 'T -> BarChartItem) =
-            barChart.AddItems(elements, converter)
+        member __.Items(config: BarChartConfig, items: 'T array, converter: 'T -> (string * float * Color)) =
+            { config with
+                Items = items |> Array.map converter |> Array.append config.Items }
 
     let barChart = BarChartBuilder()
