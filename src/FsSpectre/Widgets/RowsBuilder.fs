@@ -7,14 +7,20 @@ open Spectre.Console.Rendering
 module RowsBuilder =
 
     type RowsConfig =
-        { Items: IRenderable array }
+        { Items: IRenderable array
+          Expand: bool }
 
-        static member Default = { Items = Array.empty<IRenderable> }
+        static member Default =
+            { Items = Array.empty<IRenderable>
+              Expand = true }
 
     type RowsBuilder() =
         member __.Yield _ = RowsConfig.Default
 
-        member __.Run(config: RowsConfig) = Rows(config.Items)
+        member __.Run(config: RowsConfig) = 
+            let result = Rows(config.Items)
+            result.Expand <- false
+            result
 
         [<CustomOperation "items_text">]
         member __.ItemsText(config: RowsConfig, items: string array) =
@@ -27,6 +33,9 @@ module RowsBuilder =
         member __.ItemsRenderable(config: RowsConfig, items: IRenderable array) =
             { config with
                 Items = Array.append config.Items items }
+
+        [<CustomOperation "collapse">]
+        member __.Collapse(config: RowsConfig) = { config with Expand = false }
 
 
     let rows = RowsBuilder()
