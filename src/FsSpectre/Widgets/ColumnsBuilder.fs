@@ -19,7 +19,7 @@ module ColumnsBuilder =
 
         member __.Run(config: ColumnsConfig) = 
             let result = Columns(config.Items)
-            result.Expand <- false
+            result.Expand <- config.Expand
             result
 
         [<CustomOperation "items_text">]
