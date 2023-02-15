@@ -16,7 +16,10 @@ module TextPromptBuilder =
           AllowEmpty: bool
           ValidationErrorMessage: string
           Validator: Option<'T -> ValidationResult>
-          Converter: Option<'T -> string> }
+          Converter: Option<'T -> string>
+          ShowChoices: bool
+          Choices: 'T array
+          ChoicesStyle: Style option }
 
         static member Default =
             { Text = String.Empty
@@ -28,7 +31,10 @@ module TextPromptBuilder =
               AllowEmpty = false
               ValidationErrorMessage = "[red]Invalid input[/]"
               Validator = None
-              Converter = None }
+              Converter = None
+              ShowChoices = false
+              Choices = Array.empty<'T>
+              ChoicesStyle = None }
 
     type TextPromptBuilder<'T>() =
         member __.Yield _ = TextPromptConfig<'T>.Default
@@ -46,6 +52,10 @@ module TextPromptBuilder =
             result.ValidationErrorMessage <- config.ValidationErrorMessage
             config.Validator |> Option.iter (fun v -> result.Validator <- v)
             config.Converter |> Option.iter (fun c -> result.Converter <- c)
+
+            result.ShowChoices <- config.ShowChoices
+            result.AddChoices(config.Choices) |> ignore
+            config.ChoicesStyle |> Option.iter (fun cs -> result.ChoicesStyle <- cs)
 
             result
 
@@ -93,5 +103,20 @@ module TextPromptBuilder =
         member __.Converter(config: TextPromptConfig<'T>, converter: 'T -> string) =
             { config with
                 Converter = Some converter }
+
+        [<CustomOperation "show_choices">]
+        member __.ShowChoices(config: TextPromptConfig<'T>) =
+            { config with
+                ShowChoices = true }
+
+        [<CustomOperation "choices">]
+        member __.Choices(config: TextPromptConfig<'T>, choices: 'T array) =
+            { config with
+                Choices = Array.append config.Choices choices }
+
+        [<CustomOperation "choices_style">]
+        member __.ChoicesStyle(config: TextPromptConfig<'T>, style: Style) =
+            { config with
+                ChoicesStyle = Some style }
 
     let textPrompt<'T> = TextPromptBuilder<'T>()
