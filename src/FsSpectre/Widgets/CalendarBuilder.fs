@@ -45,10 +45,14 @@ module CalendarBuilder =
             { config with
                 CultureInfo = cultureInfo }
 
+        [<CustomOperation "header_style">]
+        member __.HeaderStyle(config: CalendarConfig, style: Style) = { config with HeaderStyle = style }
+
+        [<CustomOperation "highlight_style">]
+        member __.HighlightStyle(config: CalendarConfig, style: Style) = { config with HighlightStyle = style }
+
         [<CustomOperation "hide_header">]
-        member __.HideHeader(config: CalendarConfig) =
-            { config with
-                ShowHeader = false }
+        member __.HideHeader(config: CalendarConfig) = { config with ShowHeader = false }
 
         [<CustomOperation "events">]
         member __.Events(config: CalendarConfig, events: CalendarEvent array) =
