@@ -18,8 +18,11 @@ module TextPromptBuilder =
           Validator: Option<'T -> ValidationResult>
           Converter: Option<'T -> string>
           ShowChoices: bool
+          ChoicesStyle: Style option
           Choices: 'T array
-          ChoicesStyle: Style option }
+          ShowDefaultValue: bool
+          DefaultValueStyle: Style option
+          DefaultValue: 'T option }
 
         static member Default =
             { Text = String.Empty
@@ -33,8 +36,11 @@ module TextPromptBuilder =
               Validator = None
               Converter = None
               ShowChoices = false
+              ChoicesStyle = None
               Choices = Array.empty<'T>
-              ChoicesStyle = None }
+              ShowDefaultValue = true
+              DefaultValueStyle = None
+              DefaultValue = None }
 
     type TextPromptBuilder<'T>() =
         member __.Yield _ = TextPromptConfig<'T>.Default
@@ -56,6 +62,10 @@ module TextPromptBuilder =
             result.ShowChoices <- config.ShowChoices
             result.AddChoices(config.Choices) |> ignore
             config.ChoicesStyle |> Option.iter (fun cs -> result.ChoicesStyle <- cs)
+
+            result.ShowDefaultValue <- config.ShowDefaultValue
+            config.DefaultValueStyle |> Option.iter (fun vs -> result.DefaultValueStyle <- vs)
+            config.DefaultValue |> Option.iter (fun dv -> result.DefaultValue(dv) |> ignore)
 
             result
 
@@ -109,14 +119,29 @@ module TextPromptBuilder =
             { config with
                 ShowChoices = true }
 
+        [<CustomOperation "choices_style">]
+        member __.ChoicesStyle(config: TextPromptConfig<'T>, style: Style) =
+            { config with
+                ChoicesStyle = Some style }
+
         [<CustomOperation "choices">]
         member __.Choices(config: TextPromptConfig<'T>, choices: 'T array) =
             { config with
                 Choices = Array.append config.Choices choices }
 
-        [<CustomOperation "choices_style">]
-        member __.ChoicesStyle(config: TextPromptConfig<'T>, style: Style) =
+        [<CustomOperation "hide_default_value">]
+        member __.HideDefaultValue(config: TextPromptConfig<'T>) =
+            { config with
+                ShowDefaultValue = false }
+
+        [<CustomOperation "default_value_style">]
+        member __.DefaultValueStyle(config: TextPromptConfig<'T>, style: Style) =
             { config with
                 ChoicesStyle = Some style }
+
+        [<CustomOperation "default_value">]
+        member __.DefaultValue(config: TextPromptConfig<'T>, value: 'T) =
+            { config with
+                DefaultValue = Some value }
 
     let textPrompt<'T> = TextPromptBuilder<'T>()
