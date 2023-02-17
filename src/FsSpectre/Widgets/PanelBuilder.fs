@@ -14,7 +14,8 @@ module PanelBuilder =
           Header: PanelHeader
           Expand: bool
           Width: int option
-          Height: int option }
+          Height: int option
+          Padding: Padding }
 
         static member Default =
             { Content = Markup(String.Empty)
@@ -23,7 +24,8 @@ module PanelBuilder =
               Header = PanelHeader(String.Empty)
               Expand = false
               Width = None
-              Height = None }
+              Height = None
+              Padding = Padding(1, 0, 1, 0)  }
 
     type PanelBuilder() =
         member __.Yield _ = PanelConfig.Default
@@ -67,5 +69,25 @@ module PanelBuilder =
 
         [<CustomOperation "height">]
         member __.Height(config: PanelConfig, height: int) = { config with Height = Some height }
+
+        [<CustomOperation "pad_left">]
+        member __.PadLeft(config: PanelConfig, pad: int) =
+            { config with
+                Padding = Padding(pad, config.Padding.Top, config.Padding.Right, config.Padding.Bottom) }
+
+        [<CustomOperation "pad_top">]
+        member __.PadTop(config: PanelConfig, pad: int) =
+            { config with
+                Padding = Padding(config.Padding.Left, pad, config.Padding.Right, config.Padding.Bottom) }
+
+        [<CustomOperation "pad_right">]
+        member __.PadRight(config: PanelConfig, pad: int) =
+            { config with
+                Padding = Padding(config.Padding.Left, config.Padding.Top, pad, config.Padding.Bottom) }
+
+        [<CustomOperation "pad_bottom">]
+        member __.PadBottom(config: PanelConfig, pad: int) =
+            { config with
+                Padding = Padding(config.Padding.Left, config.Padding.Top, config.Padding.Right, pad) }
 
     let panel = PanelBuilder()
