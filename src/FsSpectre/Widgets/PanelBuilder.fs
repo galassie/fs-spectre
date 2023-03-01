@@ -11,6 +11,7 @@ module PanelBuilder =
         { Content: IRenderable
           BorderStyle: Style option
           BorderColor: Color option
+          BoxBorder: BoxBorder
           Header: PanelHeader
           Expand: bool
           Width: int option
@@ -21,6 +22,7 @@ module PanelBuilder =
             { Content = Markup(String.Empty)
               BorderStyle = None
               BorderColor = None
+              BoxBorder = BoxBorder.Square
               Header = PanelHeader(String.Empty)
               Expand = false
               Width = None
@@ -34,6 +36,7 @@ module PanelBuilder =
             let result = Panel(config.Content)
             config.BorderStyle |> Option.iter (fun s -> result.BorderStyle <- s)
             config.BorderColor |> Option.iter (fun c -> result.BorderColor(c) |> ignore)
+            result.Border <- config.BoxBorder
             result.Header <- config.Header
             config.Width |> Option.iter (fun w -> result.Width <- (Nullable w))
             config.Height |> Option.iter (fun h -> result.Height <- (Nullable h))
@@ -52,6 +55,10 @@ module PanelBuilder =
         [<CustomOperation "border_color">]
         member __.BorderColor(config: PanelConfig, color: Color) =
             { config with BorderColor = Some color }
+
+        [<CustomOperation "box_border">]
+        member __.BoxBorder(config: PanelConfig, boxBorder: BoxBorder) =
+            { config with BoxBorder = boxBorder }
 
         [<CustomOperation "header">]
         member __.Header(config: PanelConfig, header: PanelHeader) = { config with Header = header }
