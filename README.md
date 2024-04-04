@@ -45,7 +45,7 @@ table {
     column_text ""
     column (tableColumn { header_text "Feature"; centerd })
     row_text [| "Baz"; "[green]Qux[/]" |]
-    row [| markup { text "[blue]Corgi[/]" }; panel { content "Waldo" } |]
+    row [| markup { text "[blue]Corgi[/]" }; panel { content_text "Waldo" } |]
 } |> AnsiConsole.Write
 ```
 
@@ -67,7 +67,7 @@ With F# + FsSpectre:
 barChart {
     width 60
     label "[green bold underline]Number of fruits[/]"
-    center_label
+    centered_label
     item ("Apple", 12, Color.Yellow)
     item ("Oranges", 54, Color.Green)
     item ("Bananas", 33, Color.Red)
