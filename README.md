@@ -74,6 +74,62 @@ barChart {
 } |> AnsiConsole.Write
 ```
 
+### Live Display
+
+With C# + Spectre.Console:
+```csharp
+var table = new Table().Centered();
+
+AnsiConsole.Live(table)
+    .Start(ctx => 
+    {
+        table.AddColumn("Foo");
+        ctx.Refresh();
+        Thread.Sleep(1000);
+
+        table.AddColumn("Bar");
+        ctx.Refresh();
+        Thread.Sleep(1000);
+    });
+```
+
+With F# + FsSpectre:
+```fsharp
+let liveDisplayTable = table { centered }
+
+liveDisplay {
+    target liveDisplayTable
+
+    start (fun ctx ->
+        liveDisplayTable.AddColumn("Foo") |> ignore
+        ctx.Refresh()
+        Thread.Sleep(1000)
+
+        liveDisplayTable.AddColumn("Bar") |> ignore
+        ctx.Refresh()
+        Thread.Sleep(1000))
+}
+```
+
+and for the Async version:
+```fsharp
+let liveDisplayAsyncTable = table { title_text "Async Table" }
+
+liveDisplayAsync {
+    target liveDisplayAsyncTable
+
+    start (fun ctx -> task {
+        liveDisplayAsyncTable.AddColumn("Foo") |> ignore
+        ctx.Refresh()
+        do! Task.Delay(1000)
+
+        liveDisplayAsyncTable.AddColumn("Bar") |> ignore
+        ctx.Refresh()
+        do! Task.Delay(1000)
+    })
+}
+```
+
 ## Showcase
 
 To see an example, execute the `Showcase.fsx` with the following command (you need to build the library first):

@@ -15,8 +15,8 @@ module TextPromptBuilder =
           HasHiddenInput: bool
           AllowEmpty: bool
           ValidationErrorMessage: string
-          Validator: Option<'T -> ValidationResult>
-          Converter: Option<'T -> string>
+          Validator: option<'T -> ValidationResult>
+          Converter: option<'T -> string>
           ShowChoices: bool
           ChoicesStyle: Style option
           Choices: 'T array
