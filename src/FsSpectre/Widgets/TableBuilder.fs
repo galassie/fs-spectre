@@ -15,7 +15,8 @@ module TableBuilder =
           Width: int option
           Expand: bool
           Border: TableBorder
-          BorderColor: Color option }
+          BorderColor: Color option
+          Centered: bool }
 
         static member Default =
             { Title = None
@@ -26,7 +27,8 @@ module TableBuilder =
               Width = None
               Expand = true
               Border = TableBorder.Square
-              BorderColor = None }
+              BorderColor = None
+              Centered = false }
 
     type TableBuilder() =
         member __.Yield _ = TableConfig.Default
@@ -41,7 +43,8 @@ module TableBuilder =
             config.Width |> Option.iter (fun w -> result.Width <- w)
             result.Border <- config.Border
             config.BorderColor |> Option.iter (fun c -> result.BorderColor(c) |> ignore)
-            result
+
+            if config.Centered then result.Centered() else result
 
         [<CustomOperation "title">]
         member __.Title(config: TableConfig, title: TableTitle) = { config with Title = Some title }
@@ -130,6 +133,9 @@ module TableBuilder =
 
             { config with
                 Rows = Array.append config.Rows [| markups |] }
+
+        [<CustomOperation "centered">]
+        member __.Centered(config: TableConfig) = { config with Centered = true }
 
 
     let table = TableBuilder()
