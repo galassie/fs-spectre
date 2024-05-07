@@ -1,4 +1,4 @@
-image: Ubuntu
+image: Ubuntu2204
 init:
   - git config --global core.autocrlf input
 
