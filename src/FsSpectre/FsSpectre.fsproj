@@ -57,6 +57,7 @@
     <Compile Include="Widgets/CalendarEventBuilder.fs" />
     <Compile Include="Widgets/CalendarBuilder.fs" />
     <Compile Include="Live/LiveDisplay.fs" />
+    <Compile Include="Live/Status.fs" />
     <Compile Include="Extras/ColorBox.fs" />
   </ItemGroup>
   <ItemGroup>

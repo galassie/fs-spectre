@@ -130,6 +130,68 @@ liveDisplayAsync {
 }
 ```
 
+### Status
+
+With C# + Spectre.Console:
+```csharp
+AnsiConsole.Status()
+    .Spinner(Spinner.Known.Arrow)
+    .SpinnerStyle(Style.Parse("blue"))
+    .Start("Thinking...", ctx => 
+    {
+        AnsiConsole.MarkupLine("Doing some work...");
+        Thread.Sleep(1000);
+
+        ctx.Status("Thinking some more");
+        ctx.Spinner(Spinner.Known.Star);
+        ctx.SpinnerStyle(Style.Parse("green"));
+
+        AnsiConsole.MarkupLine("Doing some more work...");
+        Thread.Sleep(2000);
+    });
+```
+
+With F# + FsSpectre:
+```fsharp
+status {
+    spinner Spinner.Known.Arrow
+    spinner_style (Style.Parse("blue"))
+
+    status "Thinking..."
+    start (fun ctx ->
+        AnsiConsole.MarkupLine("Doing some work...")
+        Thread.Sleep(1000)
+
+        ctx.Status <- "Thinking some more"
+        ctx.Spinner <- Spinner.Known.Star
+        ctx.SpinnerStyle <- Style.Parse("green")
+
+        AnsiConsole.MarkupLine("Doing some more work...")
+        Thread.Sleep(2000))
+}
+```
+
+and for the Async version:
+```fsharp
+statusAsync {
+    spinner Spinner.Known.Arrow
+    spinner_style (Style.Parse("blue"))
+
+    status "Thinking..."
+    start (fun ctx -> task {
+        AnsiConsole.MarkupLine("Doing some work...")
+        do! System.Threading.Tasks.Task.Delay(1000)
+
+        ctx.Status <- "Thinking some more"
+        ctx.Spinner <- Spinner.Known.Star
+        ctx.SpinnerStyle <- Style.Parse("green")
+
+        AnsiConsole.MarkupLine("Doing some more work...")
+        do! System.Threading.Tasks.Task.Delay(2000)
+    })
+}
+```
+
 ## Showcase
 
 To see an example, execute the `Showcase.fsx` with the following command (you need to build the library first):
