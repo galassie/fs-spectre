@@ -4,7 +4,7 @@
     <Title>FsSpectre</Title>
     <Description>Spectre.Console with with F# style.</Description>
     <!-- Build settings -->
-    <TargetFrameworks>net6.0;netstandard2.0</TargetFrameworks>
+    <TargetFrameworks>net8.0;netstandard2.0</TargetFrameworks>
     <DebugType>portable</DebugType>
     <OutputType>Library</OutputType>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
@@ -29,8 +29,8 @@
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Update="FSharp.Core" Version="6.0.0" />
-    <PackageReference Include="Spectre.Console" Version="0.46.0" />
+    <PackageReference Update="FSharp.Core" Version="8.0.200" />
+    <PackageReference Include="Spectre.Console" Version="0.49.1" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Syle.fs" />

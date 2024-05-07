@@ -30,7 +30,7 @@ module CalendarBuilder =
             let result = Calendar(config.DateTime)
             result.Culture <- config.CultureInfo
             result.HeaderStyle <- config.HeaderStyle
-            result.HightlightStyle <- config.HighlightStyle
+            result.HighlightStyle <- config.HighlightStyle
             config.Events |> Array.map result.CalendarEvents.Add |> ignore
             result
 
