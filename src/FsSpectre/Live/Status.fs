@@ -33,13 +33,13 @@ module StatusBuilder =
             status.Start(config.Status, config.Start)
 
         [<CustomOperation "auto_refresh">]
-        member __.AutoRefresh(config: StatusConfig<'T>, autoClear: bool) = { config with AutoRefresh = autoClear }
+        member __.AutoRefresh(config: StatusConfig<'T>, autoRefresh: bool) = { config with AutoRefresh = autoRefresh }
 
         [<CustomOperation "spinner">]
         member __.Spinner(config: StatusConfig<'T>, spinner: Spinner) = { config with Spinner = spinner }
 
         [<CustomOperation "spinner_style">]
-        member __.Cropping(config: StatusConfig<'T>, spinnerStyle: Style) =
+        member __.SpinnerStyle(config: StatusConfig<'T>, spinnerStyle: Style) =
             { config with
                 SpinnerStyle = spinnerStyle }
 
@@ -57,7 +57,7 @@ module StatusBuilder =
           Start: StatusContext -> Task<'T> }
 
         static member Default =
-            { AutoRefresh = false
+            { AutoRefresh = true
               Spinner = Spinner.Known.Default
               SpinnerStyle = new Style(Color.Yellow)
               Status = String.Empty
@@ -75,13 +75,13 @@ module StatusBuilder =
             status.StartAsync(config.Status, config.Start)
 
         [<CustomOperation "auto_refresh">]
-        member __.AutoRefresh(config: StatusAsyncConfig<'T>, autoClear: bool) = { config with AutoRefresh = autoClear }
+        member __.AutoRefresh(config: StatusAsyncConfig<'T>, autoRefresh: bool) = { config with AutoRefresh = autoRefresh }
 
         [<CustomOperation "spinner">]
         member __.Spinner(config: StatusAsyncConfig<'T>, spinner: Spinner) = { config with Spinner = spinner }
 
         [<CustomOperation "spinner_style">]
-        member __.Cropping(config: StatusAsyncConfig<'T>, spinnerStyle: Style) =
+        member __.SpinnerStyle(config: StatusAsyncConfig<'T>, spinnerStyle: Style) =
             { config with
                 SpinnerStyle = spinnerStyle }
 

@@ -130,6 +130,54 @@ liveDisplayAsync {
 }
 ```
 
+### Progress
+
+With C# + Spectre.Console:
+```csharp
+AnsiConsole.Progress()
+    .Start(ctx => 
+    {
+        var task1 = ctx.AddTask("[green]Reticulating splines[/]");
+        var task2 = ctx.AddTask("[green]Folding space[/]");
+
+        while(!ctx.IsFinished) 
+        {
+            Thread.Sleep(250);
+            task1.Increment(1.5);
+            task2.Increment(0.5);
+        }
+    });
+```
+
+With F# + FsSpectre:
+```fsharp
+progress {
+    start (fun ctx ->
+        let task1 = ctx.AddTask("[green]Reticulating splines[/]")
+        let task2 = ctx.AddTask("[green]Folding space[/]")
+
+        while not ctx.IsFinished do
+            Thread.Sleep(250)
+            task1.Increment(1.5)
+            task2.Increment(0.5))
+}
+```
+
+and for the Async version:
+```fsharp
+progressAsync {
+    start (fun ctx -> task{
+        let task1 = ctx.AddTask("[green]Reticulating splines[/]")
+        let task2 = ctx.AddTask("[green]Folding space[/]")
+
+        while not ctx.IsFinished do
+            do! Task.Delay(250)
+            task1.Increment(1.5)
+            task2.Increment(0.5)
+    })
+}
+```
+
 ### Status
 
 With C# + Spectre.Console:
@@ -180,14 +228,14 @@ statusAsync {
     status "Thinking..."
     start (fun ctx -> task {
         AnsiConsole.MarkupLine("Doing some work...")
-        do! System.Threading.Tasks.Task.Delay(1000)
+        do! Task.Delay(1000)
 
         ctx.Status <- "Thinking some more"
         ctx.Spinner <- Spinner.Known.Star
         ctx.SpinnerStyle <- Style.Parse("green")
 
         AnsiConsole.MarkupLine("Doing some more work...")
-        do! System.Threading.Tasks.Task.Delay(2000)
+        do! Task.Delay(2000)
     })
 }
 ```
