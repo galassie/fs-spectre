@@ -25,7 +25,7 @@ module ProgressBuilder =
         member __.Yield _ = ProgressConfig<'T>.Default
 
         member __.Run(config: ProgressConfig<'T>) =
-            let progress = AnsiConsole.Progress()
+            let progress = AnsiConsole.Progress().Columns(config.Columns)
             progress.AutoRefresh <- config.AutoRefresh
             progress.AutoClear <- config.AutoClear
             progress.HideCompleted <- config.HideCompleted
@@ -69,7 +69,7 @@ module ProgressBuilder =
         member __.Yield _ = ProgressAsyncConfig<'T>.Default
 
         member __.Run(config: ProgressAsyncConfig<'T>) =
-            let progress = AnsiConsole.Progress()
+            let progress = AnsiConsole.Progress().Columns(config.Columns)
             progress.AutoRefresh <- config.AutoRefresh
             progress.AutoClear <- config.AutoClear
             progress.HideCompleted <- config.HideCompleted
