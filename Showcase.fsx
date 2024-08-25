@@ -1,5 +1,5 @@
 #r "nuget: Spectre.Console, 0.46.0"
-#r "src/FsSpectre/bin/Debug/net6.0/FsSpectre.dll"
+#r "src/FsSpectre/bin/Debug/net8.0/FsSpectre.dll"
 
 open System
 open Spectre.Console
