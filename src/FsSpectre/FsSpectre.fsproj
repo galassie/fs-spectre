@@ -4,7 +4,7 @@
     <Title>FsSpectre</Title>
     <Description>Spectre.Console with with F# style.</Description>
     <!-- Build settings -->
-    <TargetFrameworks>net8.0;netstandard2.0</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <DebugType>portable</DebugType>
     <OutputType>Library</OutputType>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
